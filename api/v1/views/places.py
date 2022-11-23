@@ -91,7 +91,7 @@ def update_place(place_id):
         if place is None:
             abort(404)
         for key, val in request_dict.items():
-            if key not in ['id', 'user_id', 'city_id',
+            if key not in ['id', 'user_id', 'place_id',
                            'created_at', 'updated_at']:
                 setattr(place, key, val)
         storage.save()
