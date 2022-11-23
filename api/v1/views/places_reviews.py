@@ -7,7 +7,6 @@ from api.v1.views import app_views
 from models import storage
 from models.place import Place
 from models.review import Review
-from models.city import City
 from flask import jsonify, abort, request, make_response
 from sqlalchemy.exc import IntegrityError
 
@@ -43,11 +42,9 @@ def get_review(review_id):
     abort(404)
 
 
-
 @app_views.route('/reviews/<review_id>',
                  methods=['DELETE'],
-                 strict_slashes=False
-                 )
+                 strict_slashes=False)
 def delete_review(review_id):
     """Deletes a `Review` object."""
     review = storage.get(Review, review_id)
