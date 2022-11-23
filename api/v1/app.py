@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """app Module"""
 from flask import Flask, jsonify, make_response
+from flask_cors import CORS
 from models import storage
 from api.v1.views import app_views
 from os import environ
 
 app = Flask(__name__)
+CORS(app)
 app.register_blueprint(app_views)
 
 
