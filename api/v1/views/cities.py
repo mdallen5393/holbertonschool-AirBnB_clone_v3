@@ -89,7 +89,7 @@ def update_city(city_id):
         if city is None:
             abort(404)
         for key, val in request_dict.items():
-            if val not in ['id', 'created_at', 'updated_at']:
+            if key not in ['id', 'state_id', 'created_at', 'updated_at']:
                 setattr(city, key, val)
         storage.save()
         return make_response(jsonify(city.to_dict()), 200)
