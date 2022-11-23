@@ -64,11 +64,13 @@ def create_state():
     return make_response(jsonify({"error": "Not a JSON"}), 400)
 
 
-@app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/states/<state_id>',
+                 methods=['PUT'],
+                 strict_slashes=False
+                 )
 def update_state(state_id):
     """Updates a `State` object."""
     request_dict = request.get_json(silent=True)
-    print(request_dict)
     if request_dict is not None:
         state = storage.get(State, state_id)
         if state is None:

@@ -77,7 +77,10 @@ def create_city(state_id):
         abort(404)
 
 
-@app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/cities/<city_id>',
+                 methods=['PUT'],
+                 strict_slashes=False
+                 )
 def update_city(city_id):
     """Updates a `City` object."""
     request_dict = request.get_json(silent=True)

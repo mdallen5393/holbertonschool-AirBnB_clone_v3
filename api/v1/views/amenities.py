@@ -65,11 +65,13 @@ def create_amenity():
     return make_response(jsonify({"error": "Not a JSON"}), 400)
 
 
-@app_views.route('/amenities/<amenity_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/amenities/<amenity_id>',
+                 methods=['PUT'],
+                 strict_slashes=False
+                 )
 def update_amenity(amenity_id):
     """Updates a `Amenity` object."""
     request_dict = request.get_json(silent=True)
-    print(request_dict)
     if request_dict is not None:
         amenity = storage.get(Amenity, amenity_id)
         if amenity is None:
